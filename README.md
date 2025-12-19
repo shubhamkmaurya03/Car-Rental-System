@@ -1,20 +1,20 @@
 The Car Rental System thus coded has three main elements :
-1) Customers: Can view only "available" cars that can be rented,Can rent cars , pay dues for it if they exist 
+1) Customers: Can view only "available" cars that can be rented, Can rent cars, pay dues for it if they exist 
 2) Employees: All functionalities that customers can perform with an added perk that they alwats have a 15% concession over renting a car or paying its dues.
-3) Managers: The administrative part of the rental system , have access to every customers' innformation , every employees' information , every cars" information.
- Can add , update , delete and view in each of the databases. They can view all the cars that exist in the system , ulike the customers who cant view the already rented cars .
-4) Car
+3) Managers: The administrative part of the rental system, have access to every customers' innformation, every employees' information, every cars" information.
+ Can add, update, delete and view in each of the databases. They can view all the cars that exist in the system , unlike the customers who cant view the already rented cars .
+4) Code.cpp
 5) CSV Files
-In this system I have used the CSV(Comma Separated Value) Files for database handling as it is a very easy to access , implemement and understand database management system .
-The Four CSV Files used in thr making of this system are :
+In this system I have used the CSV(Comma Separated Value) Files for database handling as it is a very easy to access, implemement and understand database management system.
+The Four CSV Files used in the making of this system are :
 
 1) car_database:
    It has 6 columns :
  1.  Column 1: The Model of the Car in the System.
- 2.  Cloumn 2: The Average Customer Record required to rent this Car( An integer value).
+ 2.  Cloumn 2: The Average Customer Record required to rent this Car(An integer value).
  3.  Column 3: The current condition , in terms of health of the car(ranging from 1 to 100).
- 4.  Column 4: A string , either "false" or "true" which implies that if a car is rented the database reads true and if not , it reads false.
- 5.  Column 5: A string which stores the date of return in the DDMMYYYY format , if the car is avilable to be rented(i.e the column 4 is false) it reads "00000000".
+ 4.  Column 4: A string , either "false" or "true" which implies that if a car is rented the database reads true and if not, it reads false.
+ 5.  Column 5: A string which stores the date of return in the DDMMYYYY format, if the car is avilable to be rented(i.e the column 4 is false) it reads "00000000".
  6.  Column 6: A string which either stores "None ", when that correspondig car is not rented or the ID of the customer/employee who has rented that car.
 
 2) customer_database:
@@ -22,14 +22,14 @@ The Four CSV Files used in thr making of this system are :
 1. Column 1: Name of the Customer
 2. Column 2: ID of the Customer. ID of every customer is unique . No two customerrs or employees or employee-customer share the same ID.
 3. Column 3: Password of the Customer
-4. Customer Record : It keeps a track of how well a customer does at the car rental system ,calculated on the basis of how much damage has he dealt to a car he rented . Upon registration , every customer is granted a customer record of 15 ,and this either decreaes ,if he damages the car , or stays constant, if he makes no harm to the rented cars.
+4. Customer Record : It keeps a track of how well a customer does at the car rental system,calculated on the basis of how much damage has he dealt to a car he rented. Upon registration, every customer is granted a customer record of 15, and this either decreaes,if he damages the car or stays constant, if he makes no harm to the rented cars.
 
 3) employee_database:
   It has 4 columns :
 1. Column 1: Name of the Employee
 2. Column 2: ID of the Employee. ID of every employee is unique . No two employees or customers or employee-customer share the same ID.
 3. Column 3: Password of the Customer
-4. Column 4: Employee Record : It keeps a track of how well a customer does at the car rental system ,calculated on the basis of how much damage has he dealt to a car he rented . Upon registration , every employee is granted a customer record of 15 ,and this either decreaes ,if he damages the rented cars , or stays constant, if he makes no harm to the rented cars.
+4. Column 4: Employee Record : It keeps a track of how well a customer does at the car rental system, calculated on the basis of how much damage has he dealt to a car he rented . Upon registration, every employee is granted a customer record of 15, and this either decreaes, if he damages the rented cars, or stays constant, if he makes no harm to the rented cars.
 
  4) manager _database:
   It has 3 columns :
@@ -45,7 +45,7 @@ The Four CSV Files used in thr making of this system are :
 
    
 1.The Employees:
-A Employee class has been created , which is a child class of the User Class, inherited via Public Inheritance.
+A Employee class has been created, which is a child class of the User Class, inherited via Public Inheritance.
 Thus it is bound to have the three attributes:
 1)A Name
 2)An ID
@@ -53,11 +53,11 @@ Thus it is bound to have the three attributes:
 The employee has an autonomy to perform 5 functions:
 
 1)  displayAvailableCarsForEmployees(const Employee employee):
-This function enables the employee to view at the possible cars tat can be reted , by taking an input of the employee Class Datatype . The main logic behind this function is whenver any car present in the "car_database.csv"file is available to rent i.e if the column 4 of the corresponding car is "false", it is displayed. If no cars are available to be rented , it displays no cars can be rented as of now.
+This function enables the employee to view at the possible cars that can be reted, by taking an input of the employee Class Datatype. The main logic behind this function is whenver any car present in the "car_database.csv" file is available to rent i.e if the column 4 of the corresponding car is "false", it is displayed. If no cars are available to be rented, it displays no cars can be rented as of now.
 
 2) rentCarForEmployee(const string& carModel, const string& inputDate):
-   This function enables the employee to rent a car after cross checking if the name the employee has input is correct or not and if it is available to rent(true/false) or not . The date is taken as
-   input because when the employee rents a car he/she is expected it to return at a certain duedate , the 6th column of the car_database. In my rental system that date is 10 days ahead of the inpuDate, or the date of renting the car. If the input name i.e model of car input is wrong or does not exist in the database , it displays no such car exists pr input car cannot be rented.
+   This function enables the employee to rent a car after cross checking if the name the employee has input is correct or not and if it is available to rent(true/false) or not. The date is taken as
+   input because when the employee rents a car he/she is expected it to return at a certain duedate, the 6th column of the car_database. In my rental system that date is 10 days ahead of the inputDate, or the date of renting the car. If the input name i.e model of car input is wrong or does not exist in the database , it displays no such car exists or input car cannot be rented.
 
 3)seeRentedCarsForEmployees(const Employee& employee):
 Enables the employee to see which all cars has he rented , checks for the ID of the corresponding employee for every 6th column of every car,checks if it is rented(true,4th column) and if the ID coincides ,the corresponding cars with some other details is then displayed on the screen. If he doesnt have any rented car , the function outputs that he hasnt rented any cars as of now .
